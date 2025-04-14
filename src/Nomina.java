@@ -15,6 +15,13 @@ import java.util.Scanner;
  * nHijos<- entrada("indicar numero de hijos")
  *
  *funcion calculoSBruto (nHoras,tarifaHoraria)
+ * Ejemplo para 190 Horas
+ * si nHoras>=169 y nHoras<=180
+ *  primerTramo=(hHoras-169)*tarifaHoraria //21 *
+ *  segundoTramo=((primerTramo)-(180-169))*tarifaHoraria*1.5 //21-11->10
+ * si hHoras>180
+ * tercerTramo=(primerTramo-segundoTramo)*tarifaHoraria*1.6 //21-10 ->11
+ *
  *
  *
  * funcion calculoPrimaFamiliar(nHijos)
@@ -64,21 +71,27 @@ public class Nomina {
 
 
 static double calcularSalarioBruto(double nHoras,double tarifaHoraria) {
-    double salarioBruto1, salarioBruto2, salarioBruto3 = 0;
-    //calculo del salario bruto
-    double horasT1,horasT2,horasT3;
-    horasT1=169;
-    horasT2=180-(nHoras-horasT1); //
-    horasT3=nHoras-horasT2;
+    // Variables de ejemplo (debes ajustar según tu implementación)
+    double salarioBruto = 0.0;
 
-    salarioBruto1 = tarifaHoraria * 169;
-
-    salarioBruto2 = (tarifaHoraria * 1.5) * (nHoras - 169);
-
-    if (nHoras > 180){
-        salarioBruto3 = (tarifaHoraria * 1.6) * (nHoras - 180);
+// Calculando el salario bruto basado en tramos de horas trabajadas
+    if (nHoras <= 168) {
+        salarioBruto = nHoras * tarifaHoraria; // Menos de 169 horas
+    } else if (nHoras <= 180) {
+        // Entre 169 y 180 horas
+        int horasNormales = 168;
+        double horasExtra50 = nHoras - horasNormales;
+        salarioBruto = horasNormales * tarifaHoraria + horasExtra50 * tarifaHoraria * 1.5;
+    } else {
+        // Más de 180 horas
+        int horasNormales = 168;
+        double horasExtra50 = 180 - horasNormales;
+        double horasExtra60 = nHoras - 180;
+        salarioBruto = horasNormales * tarifaHoraria + horasExtra50 * tarifaHoraria * 1.5 + horasExtra60 * tarifaHoraria * 1.6;
     }
-      return salarioBruto1+salarioBruto2+salarioBruto3;
+
+// Mostrar el salario bruto
+    return salarioBruto;
 }
 
 

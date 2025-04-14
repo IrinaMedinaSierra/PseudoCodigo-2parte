@@ -14,7 +14,6 @@ import java.util.Scanner;
  *          sino si temperatura>=30
  *              mostrar "Hace mucho calor"
   */
-
 public class ElTiempo {
     public static void main(String[] args) {
    Scanner sn = new Scanner(System.in);
@@ -28,6 +27,10 @@ public class ElTiempo {
                 System.out.println("Riesgo de Hielo");
             } else if (temperatura < 15) {
                 System.out.println("Hace frio");
+            } else if (temperatura < 30) {
+                System.out.println("Hace calor");
+            } else if (temperatura < 50) {
+                System.out.println("Hace muuucho calor");
             }
 
 
