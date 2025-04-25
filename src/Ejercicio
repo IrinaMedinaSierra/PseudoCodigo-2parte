@@ -1,0 +1,21 @@
+Crear la Clase Persona con los siguientes atributos:
+
+id
+nombre
+apellido
+sexo
+telefono
+email
+direccion
+
+CRUD-> Create  Read    Update   Delete <-
+1. Solicitar los datos -> crea un objeto y luego se inserta en el ArrayList
+2. Modificar los datos -> mostrar todas las personas y luego pedir cual quieres modicar.
+                          soliciar que quieres modificar(nombre,apellido,sexo,telefono, email, direccion)
+3. Eliminar un dato    -> mostrar todas las personas que hay en el ArrayList y pedimos cual quiere
+                          eliminar. Luego eliminarlo
+
+4. Mostrar todos
+
+5. Salir
+

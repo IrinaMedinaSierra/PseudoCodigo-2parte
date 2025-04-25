@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
@@ -53,6 +55,10 @@ public class Nomina {
         // System.out.println("La prima por hijos es " + primaFamiliar(nHijos)+"€");
         pfamiliar = primaFamiliar(nHijos);
         System.out.println("sueldo bruto " +calcularSalarioBruto(nHoras,tarifaHoraria));
+       salarioBruto=calcularSalarioBruto(nHoras,tarifaHoraria);
+       calculoDeducciones(salarioBruto);
+
+
     }
 
     static int primaFamiliar(int numHijos) {
@@ -75,16 +81,16 @@ static double calcularSalarioBruto(double nHoras,double tarifaHoraria) {
     double salarioBruto = 0.0;
 
 // Calculando el salario bruto basado en tramos de horas trabajadas
-    if (nHoras <= 168) {
+    if (nHoras <= 169) {
         salarioBruto = nHoras * tarifaHoraria; // Menos de 169 horas
     } else if (nHoras <= 180) {
         // Entre 169 y 180 horas
-        int horasNormales = 168;
+        int horasNormales = 169;
         double horasExtra50 = nHoras - horasNormales;
         salarioBruto = horasNormales * tarifaHoraria + horasExtra50 * tarifaHoraria * 1.5;
     } else {
         // Más de 180 horas
-        int horasNormales = 168;
+        int horasNormales = 169;
         double horasExtra50 = 180 - horasNormales;
         double horasExtra60 = nHoras - 180;
         salarioBruto = horasNormales * tarifaHoraria + horasExtra50 * tarifaHoraria * 1.5 + horasExtra60 * tarifaHoraria * 1.6;
@@ -94,10 +100,13 @@ static double calcularSalarioBruto(double nHoras,double tarifaHoraria) {
     return salarioBruto;
 }
 
-
-
-
-
+static  void calculoDeducciones(double salarioBruto){
+    DecimalFormat df = new DecimalFormat("#.00");
+    System.out.println("Contribución para el pago de la deuda social y contingencias comunes imponible "+ df.format(salarioBruto*3.49/100));
+    System.out.println("Contribución de contingencias comunes no imponible " + String.format("%.2f", salarioBruto*6.15/100));
+    System.out.println("Seguro médico " + Math.round((salarioBruto*0.95/100)*100)/100.0);
+    System.out.printf("Fondo de pensiones %.2f€ ", (salarioBruto*8.44/100));
+}
 }
 
 
