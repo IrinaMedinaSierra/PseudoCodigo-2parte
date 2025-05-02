@@ -1,6 +1,6 @@
 Crear la Clase Persona con los siguientes atributos:
 
-id
+id -AUTOGENERA
 nombre
 apellido
 sexo
